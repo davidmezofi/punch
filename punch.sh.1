@@ -1,0 +1,125 @@
+.\" Copyright 2022 Dávid Csaba Mezőfi
+.TH "PUNCH.SH" 1 "2022-02-02"
+.
+.SH NAME
+punch.sh \- install fonts for groff
+.
+.SH SYNOPSIS
+.SY punch.sh
+.OP \-h
+.OP \-g groffpath
+.OP \-v groffversion
+.OP \-f fontpath
+.I fontfile
+.I fontname
+.YS
+.
+.SH DESCRIPTION
+.PP
+The shells script
+.B punch.sh
+automates the process of installing fonts for groff.
+.PP
+The first argument
+.I fontfile
+shall be a TrueType (TTF), OpenType (OTF) or Type 1 (PFA) font file.  The
+second argument
+.I fontname
+shall be the groff font name, e.g. \c
+.IR MyFontR .
+The recommended naming convention is to use the letters
+.BR R ,
+.BR B ,
+.B I
+and
+.B BI 
+as postfixes in
+.I fontname
+for roman, italic, bold and bold italic font faces, respectively.  In the
+example above
+.I MyFontR
+would stand for the roman font of the
+.I MyFont
+font family.
+.PP
+Most likely the script needs to be run as root, but it depends on your rights
+to the directories where you want to install the fonts.
+.PP
+If an error occurs, then the script tries to report to
+.B stderr
+what happened.
+.
+.SH OPTIONS
+.TP
+.B \-h
+Print the usage of the script.
+.TP
+\fB\-g\fR \fIgroffpath\fR
+Set path of groff to
+.IR groffpath.
+If the option is not present the script uses
+.I /usr/share/groff
+by default.  Your groff installation shall be under
+.IR groffpath/groffversion .
+.TP
+\fB\-v\fR \fIgroffversion\fR
+Set the version of groff installed to
+.IR groffversion .
+If the option is not present the script
+uses
+.I 1.22.4
+by default.  Your groff installation shall be under
+.IR groffpath/groffversion .
+.TP
+\fB\-f\fR \fIfontpath\fR
+Set
+.I fontpath
+to the first directory in your font path.
+If the option is not present the script
+uses
+.I /etc/groff/site-font
+by default.  See the man page of grops and troff to find your first directory
+in your font path.
+.IP
+Your font files will be installed under this directory.
+.
+.SH EXIT STATUS
+.TP
+0
+The execution of the script was successful
+.TP
+1
+Incorrect options or arguments were provided
+.TP
+2
+fontforge is not in
+.B $PATH
+.TP
+3
+Missing files
+.TP
+4
+The temporary directory
+.I /tmp/fontbuild
+was already existing at the start of the script
+.
+.SH NOTES
+Why punch?  Punches are the tools used for creating matrices, which then served
+as mold for types.  Punches are used by
+.UR https://en.wikipedia.org/wiki/Punchcutting
+punchcutters
+.UE .
+.PP
+The script was inspired by the install-font.sh script
+.UR https://www.schaffter.ca/mom/momdoc/appendices.html#fonts
+by Peter Schaffter
+.UE .
+.
+.SH SEE ALSO
+.BR afmtodit (1),
+.BR fontforge (1),
+.BR groff (1),
+.BR gropdf (1),
+.BR grops (1),
+.BR troff (1),
+.BR groff_mom (7)
