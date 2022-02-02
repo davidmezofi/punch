@@ -144,7 +144,6 @@ mv "$FONTNAME.pfa" "$FONTNAME.afm" "$TMPDIR/"
 isitalic=0
 grep -e '^[fF]ont[nN]ame \+.*[iI]talic' "$TMPDIR/$FONTNAME.afm" && isitalic=1
 
-# See the man page of afmtodit for a description of its options
 TEXTMAP="$GROFFPATH/$GROFFVERSION/font/devps/generate/textmap"
 TEXTENC="$GROFFPATH/$GROFFVERSION/font/devps/text.enc"
 [ "$isitalic" -eq 0 ] && \
@@ -153,7 +152,6 @@ TEXTENC="$GROFFPATH/$GROFFVERSION/font/devps/text.enc"
     afmtodit -e "$TEXTENC" -i50 -o "$TMPDIR/$2" "$TMPDIR/$FONTNAME.afm" "$TEXTMAP" "$2"
 isitthere "$TMPDIR/$2"
 
-# See the man page of grops and gropdf
 isitthere "$FONTPATH/devps"
 isitthere "$FONTPATH/devpdf"
 
