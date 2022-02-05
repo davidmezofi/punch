@@ -7,7 +7,8 @@ notice are preserved.  This file is offered as-is, without any warranty.
 
                                    PUNCH.SH
 
-The shells script punch.sh automates the process of installing fonts for groff.
+The shells script punch.sh tries to automate the process of installing fonts
+for groff.
 
     punch.sh [-h] [-g groffpath] [-v groffversion] [-f fontpath] fontfile fontname
 
@@ -20,10 +21,10 @@ font of the MyFont font family.
 
 By default the script assumes /usr/share/groff/1.22.4 to be the location of
 your groff installation (groffpath/groffversion) and /etc/groff/site-font to be
-the first directory in your font path (fontpath).
+your local font directory (fontpath).
 
 Most likely the script needs to be run as root, but it depends on your rights
-to the directories where you want to install the fonts.
+to the local font directory where the font will be installed.
 
 For a complete manual run
 

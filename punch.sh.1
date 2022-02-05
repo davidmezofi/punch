@@ -1,5 +1,5 @@
 .\" Copyright 2022 Dávid Csaba Mezőfi
-.TH "PUNCH.SH" 1 "2022-02-02"
+.TH "PUNCH.SH" 1 "2022-02-05"
 .
 .SH NAME
 punch.sh \- install fonts for groff
@@ -18,7 +18,7 @@ punch.sh \- install fonts for groff
 .PP
 The shells script
 .B punch.sh
-automates the process of installing fonts for groff.
+tries to automate the process of installing fonts for groff.
 .PP
 The first argument
 .I fontfile
@@ -42,12 +42,12 @@ would stand for the roman font of the
 .I MyFont
 font family.
 .PP
-Most likely the script needs to be run as root, but it depends on your rights
-to the directories where you want to install the fonts.
-.PP
 If an error occurs, then the script tries to report to
 .B stderr
 what happened.
+.PP
+Most likely the script needs to be run as root, but it depends on your rights
+to the local font directory where the font will be installed.
 .
 .SH OPTIONS
 .TP
@@ -59,8 +59,12 @@ Set path of groff to
 .IR groffpath.
 If the option is not present the script uses
 .I /usr/share/groff
-by default.  Your groff installation shall be under
-.IR groffpath/groffversion .
+by default.
+.IP
+See \(lqDirectory\ for\ data\ files.\(rq under the
+.B INSTALLATION\ DIRECTORIES
+section in the man page of groff to find out your
+.IR groffpath .
 .TP
 \fB\-v\fR \fIgroffversion\fR
 Set the version of groff installed to
@@ -68,20 +72,26 @@ Set the version of groff installed to
 If the option is not present the script
 uses
 .I 1.22.4
-by default.  Your groff installation shall be under
-.IR groffpath/groffversion .
+by default.
+.IP
+See \(lqDirectory\ for\ data\ files.\(rq under the
+.B INSTALLATION\ DIRECTORIES
+section in the man page of groff to find out your
+.IR groffversion .
 .TP
 \fB\-f\fR \fIfontpath\fR
 Set
 .I fontpath
-to the first directory in your font path.
+as the local font directory of groff.
 If the option is not present the script
 uses
 .I /etc/groff/site-font
-by default.  See the man page of grops and troff to find your first directory
-in your font path.
+by default.  Your generated font files will be installed under this directory.
 .IP
-Your font files will be installed under this directory.
+See \(lqLocal\ font\ directory.\(rq under the
+.B INSTALLATION\ DIRECTORIES
+section in the man page of groff to find out your
+.IR fontpath .
 .
 .SH EXIT STATUS
 .TP
@@ -110,10 +120,11 @@ as the mold for the types.  Punches are used by
 punchcutters
 .UE .
 .PP
-The script was inspired by the install-font.sh script
+The script punch.sh was inspired by the 
 .UR https://www.schaffter.ca/mom/momdoc/appendices.html#fonts
-by Peter Schaffter
-.UE .
+install-font.sh script
+.UE
+by Peter Schaffter.
 .
 .SH SEE ALSO
 .BR afmtodit (1),
@@ -121,5 +132,4 @@ by Peter Schaffter
 .BR groff (1),
 .BR gropdf (1),
 .BR grops (1),
-.BR troff (1),
 .BR groff_mom (7)
