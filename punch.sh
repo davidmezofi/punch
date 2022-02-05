@@ -19,12 +19,12 @@ GROFFVERSION=1.22.4
 FONTPATH=/etc/groff/site-font
 
 usage() {
-    echo "Usage: punch.sh [-h] [-g groffpath] [-v groffversion] [-f fontpath] fontfile fontname" >&2
+    echo "Usage:  punch.sh [-h] [-g groffpath] [-v groffversion] [-f fontpath] fontfile fontname" >&2
 }
 
-if ! TEMP=$(getopt -o '+hg:v:f:' -n 'davidfont.sh' -- "$@")
+if ! TEMP=$(getopt -o '+hg:v:f:' -n 'punch.sh' -- "$@")
 then
-    echo "punch.sh: Error during parsing options" >&2 
+    echo "punch.sh:  Error during parsing options." >&2 
     exit 1
 fi
 
@@ -57,7 +57,7 @@ do
             break
             ;;
         *)
-            echo "punch.sh: Error during parsing options" >&2 
+            echo "punch.sh:  Error during parsing options." >&2 
             usage
             exit 1
     esac
@@ -65,7 +65,7 @@ done
 
 isitthere () {
     [ ! -e "$1" ] && {
-        echo "punch.sh: $1 does not exist." >&2
+        echo "punch.sh:  $1 does not exist." >&2
         exit 3
     }
 }
@@ -75,7 +75,7 @@ isitthere "$GROFFPATH/$GROFFVERSION"
 isitthere "$FONTPATH"
 
 [ $# -ne 2 ] && {
-    echo "punch.sh: Exactly two arguments are expected." >&2
+    echo "punch.sh:  Exactly two arguments are expected." >&2
     usage
     exit 1
 }
@@ -84,20 +84,20 @@ isitthere "$1"
 case ${1##*.} in
     "ttf" | "TTF" | "otf" | "OTF" | "pfb" | "PFB" );;
     *)
-        echo "punch.sh: The argument FONT must a TTF, OTF or PFB font." >&2
+        echo "punch.sh:  The argument fontfile must a TTF, OTF or PFB font." >&2
         usage
         exit 1
 esac
 FONTFILE=$(readlink -f "$1")
 
 which fontforge > /dev/null 2>&1 || {
-    echo "punch.sh: fontforge is not in \$PATH." >&2
+    echo "punch.sh:  fontforge is not in \$PATH." >&2
     exit 2
 }
 
 TMPDIR=/tmp/fontbuild
 [ -d $TMPDIR ] && {
-    echo "punch.sh: $TMPDIR already exists." >&2
+    echo "punch.sh:  $TMPDIR already exists." >&2
     exit 4
 }
 mkdir -p $TMPDIR
