@@ -96,7 +96,7 @@ which fontforge > /dev/null 2>&1 || {
 
 TMPDIR=/tmp/fontbuild
 [ -d $TMPDIR ] && {
-    echo "punch.sh: $TMPDIR already exists."
+    echo "punch.sh: $TMPDIR already exists." >&2
     exit 4
 }
 mkdir -p $TMPDIR
