@@ -22,11 +22,12 @@ usage() {
     echo "Usage: punch.sh [-h] [-g groffpath] [-v groffversion] [-f fontpath] fontfile fontname" >&2
 }
 
-TEMP=$(getopt -o '+hg:v:f:' -n 'davidfont.sh' -- "$@")
-[ $? -ne 0 ] && {
+if ! TEMP=$(getopt -o '+hg:v:f:' -n 'davidfont.sh' -- "$@")
+then
     echo "punch.sh: Error during parsing options" >&2 
     exit 1
-}
+fi
+
 eval set -- "$TEMP"
 unset TEMP
 while true
