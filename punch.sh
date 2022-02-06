@@ -168,7 +168,7 @@ ln -sf "$FONTPATH/devps/$2" "$FONTPATH/devpdf/$2"
 
 downloadbkp() {
     [ -e "$1" ] && \
-        cp --backup=numbered "$1" "$1.bkp"
+        cp -f "$1" "$1.bkp"
     [ ! -e "$1" ] && {
         isitthere "$2"
         cp "$2" "$1"
