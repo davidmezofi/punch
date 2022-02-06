@@ -40,17 +40,17 @@ do
         '-g')
             GROFFPATH="$2"
             shift 2
-            break
+            continue
             ;;
         '-v')
             GROFFVERSION="$2"
             shift 2
-            break
+            continue
             ;;
         '-f')
             FONTPATH="$2"
             shift 2
-            break
+            continue
             ;;
         '--')
             shift
