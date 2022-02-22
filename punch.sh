@@ -153,8 +153,8 @@ TEXTENC="$GROFFPATH/$GROFFVERSION/font/devps/text.enc"
     afmtodit -e "$TEXTENC" -i50 -o "$TMPDIR/$2" "$TMPDIR/$FONTNAME.afm" "$TEXTMAP" "$2"
 isitthere "$TMPDIR/$2"
 
-isitthere "$FONTPATH/devps"
-isitthere "$FONTPATH/devpdf"
+mkdir -p "$FONTPATH/devps"
+mkdir -p "$FONTPATH/devpdf"
 
 [ $TOTF -eq 1 ] && {
     mv -f "$TMPDIR/$FONTNAME.t42" "$TMPDIR/$2" "$FONTPATH/devps/"
