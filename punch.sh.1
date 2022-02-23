@@ -24,7 +24,7 @@ punch.sh \- install fonts for groff
 .PP
 The shells script
 .B punch.sh
-tries to automate the process of installing fonts for groff.
+automates the process of installing fonts for groff.
 .PP
 The first argument
 .I fontfile
@@ -61,11 +61,11 @@ to the local font directory where the font will be installed.
 Print the usage of the script.
 .TP
 \fB\-g\fR \fIgroffpath\fR
-Set path of groff to
-.IR groffpath.
-If the option is not present the script uses
+Set the path to groff to
+.I groffpath
+(set to
 .I /usr/share/groff
-by default.
+by default).
 .IP
 See \(lqDirectory\ for\ data\ files.\(rq under the
 .B INSTALLATION\ DIRECTORIES
@@ -74,11 +74,10 @@ section in the man page of groff to find out your
 .TP
 \fB\-v\fR \fIgroffversion\fR
 Set the version of groff installed to
-.IR groffversion .
-If the option is not present the script
-uses
+.I groffversion
+(set to
 .I 1.22.4
-by default.
+by default).
 .IP
 See \(lqDirectory\ for\ data\ files.\(rq under the
 .B INSTALLATION\ DIRECTORIES
@@ -88,11 +87,9 @@ section in the man page of groff to find out your
 \fB\-f\fR \fIfontpath\fR
 Set
 .I fontpath
-as the local font directory of groff.
-If the option is not present the script
-uses
+as the local font directory of groff (set to
 .I /etc/groff/site-font
-by default.  Your generated font files will be installed under this directory.
+by default).  Your generated font files will be installed under this directory.
 .IP
 See \(lqLocal\ font\ directory.\(rq under the
 .B INSTALLATION\ DIRECTORIES
@@ -120,12 +117,6 @@ The temporary directory
 was already existing at the start of the script
 .
 .SH NOTES
-Why punch?  Punches are the tools used for creating matrices, which then served
-as the mold for the types.  Punches are used by
-.UR https://en.wikipedia.org/wiki/Punchcutting
-punchcutters
-.UE .
-.PP
 The script punch.sh was inspired by the 
 .UR https://www.schaffter.ca/mom/momdoc/appendices.html#fonts
 install-font.sh script
