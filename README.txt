@@ -28,7 +28,7 @@ to the local font directory where the font will be installed.
 
 For a complete manual run
 
-    groff -man -Tutf8 punch.sh.1 | less -R
+    man ./punch.sh.1
 
 The script was inspired by the install-font.sh script
 <https://www.schaffter.ca/mom/momdoc/appendices.html#fonts> by Peter Schaffter.
